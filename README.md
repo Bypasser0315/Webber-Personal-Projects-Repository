@@ -57,6 +57,22 @@ timeline
 
 For this app to work, you must have an [OpenRouter](https://openrouter.ai) key. You can use one with 0 tokens as this uses a free model. 
 
+### Navigation
+
+Thanks to Gradio, a simple input/output interface was achieved. There are 2 main sections of input:
+- Prompt
+- Output format
+
+The prompt box features several adjustable elements and the input HTML:
+
+https://github.com/user-attachments/assets/ccce1519-e802-4d36-a62b-ee1b71d9f510
+
+The output box decides the format of the output:
+
+https://github.com/user-attachments/assets/64aac7ea-3428-498a-b570-bf386df2c8dc
+
+This layout aims to minimize confusion and allow for a flexible range of outputs.
+
 Try it out in your computer!
 
 ## Cookie Cooker
