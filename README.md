@@ -12,7 +12,7 @@
 </div>
 
 ## Introduction
-This is my personal collection of projecats made using Python(3.11) and Jupyter Notebook, with the help of Gemini and Cursor. Prerequisites are listed [here](PREREQUISITES.md).
+This is my personal collection of projects. Prerequisites are listed [here](PREREQUISITES.md).
 
 **The projects focus mainly on these attributes:**
 - Web Scraping
