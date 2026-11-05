@@ -1,0 +1,12 @@
+beautifulsoup4
+gradio
+jupyter
+markdown
+openpyxl
+pandas
+pypdf
+pymupdf
+python-docx
+python-dotenv
+requests
+selenium

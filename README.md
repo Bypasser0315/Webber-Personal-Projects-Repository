@@ -1,6 +1,6 @@
 <div align="center">
 
-[**Overview**](README.md) &nbsp;&nbsp;|&nbsp;&nbsp; [Prerequisites](PREREQUISITES.md)
+[**Overview**](README.md) &nbsp;&nbsp;|&nbsp;&nbsp; [Install](INSTALL.md)
 
   ![alt text](readme-images/image-3.png)
   
@@ -12,7 +12,7 @@
 </div>
 
 ## Introduction
-This is my personal collection of projects. Prerequisites are listed [here](PREREQUISITES.md).
+This is my personal collection of projects. The packages for all of them are in [requirements.txt](requirements.txt). Install steps are [here](INSTALL.md).
 
 **The projects focus mainly on these attributes:**
 - Web Scraping
