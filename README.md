@@ -2,11 +2,11 @@
 
 [**Overview**](README.md) &nbsp;&nbsp;|&nbsp;&nbsp; [Prerequisites](PREREQUISITES.md)
 
-  ![alt text](image-3.png)
+  ![alt text](readme-images/image-3.png)
   
   <span style="font-size: 24px; font-weight: bold"> A personal projects repository <span>
   
-  ![alt text](Selenium.svg) ![alt text](Gradio.svg) ![alt text](image-4.png) ![alt text](image-7.png) ![alt text](image-16.png) ![alt text](image-5.png)  
+  ![alt text](readme-images/Selenium.svg) ![alt text](readme-images/Gradio.svg) ![alt text](readme-images/image-4.png) ![alt text](readme-images/image-7.png) ![alt text](readme-images/image-16.png) ![alt text](readme-images/image-5.png)  
   
   <span style="font-size: 16px;"> Made with Gemini and Cursor <span>
 </div>
@@ -24,12 +24,12 @@ This is my personal collection of projecats made using Python(3.11) and Jupyter 
 
 | Project | Function |
 | ------- | ------- |
-| ![alt text](image-9.png) | ![alt text](Gradio.svg) app that processes a website from an url, then uses an AI (free model) to extract information based on user request.|
-| ![alt text](image-10.png) | ![alt text](Selenium.svg) app that automatically plays cookie clicker. |
-| ![alt text](image-11.png) | App that automates whatsapp messages by sending a message + image(optional) to a large group of recipents listed in a CSV file. |
-| ![alt text](image-12.png) | Web scraping Demonstration. Uses ![alt text](Selenium.svg) to navigate through HKTV Mall website's dynamnic HTML, then analyses it using ![alt text](image-7.png).| 
-| ![alt text](image-13.png) | A small collection of programs that perform sorts of numbered item lists in different methods. |
-| ![alt text](image-14.png) | A Demonstration that uses ![alt text](image-17.png) to scrape the pdf, then sort D1 Question and Answer Papers together by topic by locating specific keywords. |
+| ![alt text](readme-images/image-9.png) | ![alt text](readme-images/Gradio.svg) app that processes a website from an url, then uses an AI (free model) to extract information based on user request.|
+| ![alt text](readme-images/image-10.png) | ![alt text](readme-images/Selenium.svg) app that automatically plays cookie clicker. |
+| ![alt text](readme-images/image-11.png) | App that automates whatsapp messages by sending a message + image(optional) to a large group of recipents listed in a CSV file. |
+| ![alt text](readme-images/image-12.png) | Web scraping Demonstration. Uses ![alt text](readme-images/Selenium.svg) to navigate through HKTV Mall website's dynamnic HTML, then analyses it using ![alt text](readme-images/image-7.png).| 
+| ![alt text](readme-images/image-13.png) | A small collection of programs that perform sorts of numbered item lists in different methods. |
+| ![alt text](readme-images/image-14.png) | A Demonstration that uses ![alt text](readme-images/image-17.png) to scrape the pdf, then sort D1 Question and Answer Papers together by topic by locating specific keywords. |
 
 ## Gradio App
 
