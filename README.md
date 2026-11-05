@@ -26,7 +26,7 @@ This is my personal collection of projecats made using Python(3.11) and Jupyter 
 | ------- | ------- |
 | ![alt text](readme-images/image-9.png) | ![alt text](readme-images/Gradio.svg) app that processes a website from an url, then uses an AI (free model) to extract information based on user request.|
 | ![alt text](readme-images/image-10.png) | ![alt text](readme-images/Selenium.svg) app that automatically plays cookie clicker. |
-| ![alt text](readme-images/image-11.png) | App that automates whatsapp messages by sending a message + image(optional) to a large group of recipents listed in a CSV file. |
+| ![alt text](readme-images/image-11.png) | ![alt text](readme-images/Selenium.svg) app that automates whatsapp messages by sending a message + image(optional) to a large group of recipents listed in a CSV file. |
 | ![alt text](readme-images/image-12.png) | Web scraping Demonstration. Uses ![alt text](readme-images/Selenium.svg) to navigate through HKTV Mall website's dynamnic HTML, then analyses it using ![alt text](readme-images/image-7.png).| 
 | ![alt text](readme-images/image-13.png) | A small collection of programs that perform sorts of numbered item lists in different methods. |
 | ![alt text](readme-images/image-14.png) | A Demonstration that uses ![alt text](readme-images/image-17.png) to scrape the pdf, then sort D1 Question and Answer Papers together by topic by locating specific keywords. |
@@ -61,7 +61,8 @@ Try it out in your computer!
 Cookie Cooker plays [Cookie Clicker](https://cookie-clicker2.com/) in Chrome. It clicks the big cookie and buys Cursor, Grandma, Farm, and Mine when they are affordable.
 
 Here's a short demo:
-cookieplaceholder.gif
+<img width="800" height="449" alt="ScreenRecording2026-11-03182613-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/4bb68cf7-d5b0-448c-b750-b6627ce6ae1f" />
+
 
 Try it out in your computer!
 
@@ -70,7 +71,8 @@ Try it out in your computer!
 Whatsapp Bot automates large-scale whatsapp messages for companies and advertisements. It works by scraping the HTML using BeautifulSoup4, then traces whatsapp html using Selenium to locate elements to input images and text, and to send the message.
 
 Here's a short demo of it in action:
-whatsappplaceholder.gif
+
+<img width="800" height="449" alt="ScreenRecording2026-11-04230910-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/63f4a8a2-fff7-4c1b-9923-04beec9e0dd9" />
 
 
 ## HKTV Mall scraper
