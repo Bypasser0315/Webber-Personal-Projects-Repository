@@ -61,6 +61,7 @@ Try it out in your computer!
 Cookie Cooker plays [Cookie Clicker](https://cookie-clicker2.com/) in Chrome. It clicks the big cookie and buys Cursor, Grandma, Farm, and Mine when they are affordable.
 
 Here's a short demo:
+
 <img width="800" height="449" alt="ScreenRecording2026-11-03182613-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/4bb68cf7-d5b0-448c-b750-b6627ce6ae1f" />
 
 
