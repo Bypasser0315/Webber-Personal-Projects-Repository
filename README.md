@@ -33,7 +33,11 @@ This is my personal collection of projects. The packages for all of them are in 
 
 ## Gradio App
 
-The gradio app is the most ambitious project in this repository. It is a web-based application that works natively on the user's computer. Here's an example output:
+The gradio app is the most ambitious project in this repository. 
+
+It is a web-based application that works natively on the user's computer. 
+
+Here's an example output:
 
 [News summary.pdf](https://github.com/user-attachments/files/34429324/News.summary.pdf)
 
@@ -65,13 +69,13 @@ Thanks to Gradio, a simple input/output interface was achieved. There are 2 main
 
 The prompt box features several adjustable elements and the input HTML:
 
-https://github.com/user-attachments/assets/ccce1519-e802-4d36-a62b-ee1b71d9f510
+<img width="400" height="499" alt="ScreenRecording2026-11-05210931-ezgif com-video-to-gif-converter(5)" src="https://github.com/user-attachments/assets/b777af02-09de-451a-9779-b64fa57f8f3d" />
 
 The output box decides the format of the output:
 
-https://github.com/user-attachments/assets/64aac7ea-3428-498a-b570-bf386df2c8dc
+<img width="800" height="129" alt="ScreenRecording2026-11-05211105-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/78addf02-697d-4089-a22c-440d3ef2d2b3" />
 
-This layout aims to minimize confusion and allow for a flexible range of outputs.
+This layout aims to minimize confusion and allow for a flexible range of both inputs and outputs.
 
 Try it out in your computer!
 
