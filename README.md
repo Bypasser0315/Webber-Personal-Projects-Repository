@@ -33,9 +33,9 @@ This is my personal collection of projects. Prerequisites are listed [here](PRER
 
 ## Gradio App
 
-The gradio app is a web-based application that works natively on the user's computer. Here's a short demonstration:
+The gradio app is a web-based application that works natively on the user's computer. Here's an example output:
 
-placeholder_gradio.gif
+[News summary.pdf](https://github.com/user-attachments/files/34429324/News.summary.pdf)
 
 The app works in a linear direction:
 
