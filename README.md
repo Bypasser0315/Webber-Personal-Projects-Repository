@@ -77,7 +77,7 @@ The output box decides the format of the output:
 
 This layout aims to minimize confusion and allow for a flexible range of both inputs and outputs.
 
-Try it out in your computer!
+Try it out on your computer!
 
 ## Cookie Cooker
 
@@ -88,7 +88,7 @@ Here's a short demo:
 <img width="800" height="449" alt="ScreenRecording2026-11-03182613-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/4bb68cf7-d5b0-448c-b750-b6627ce6ae1f" />
 
 
-Try it out in your computer!
+Try it out on your computer!
 
 ## Whatsapp Bot
 
