@@ -33,9 +33,9 @@ This is my personal collection of projects. The packages for all of them are in 
 
 ## Gradio App
 
-The gradio app is the most ambitious project in this repository. 
+The gradio app is the most ambitious project in this repository. I made this app to provide a clearer interface so that users can get better outputs from AI without having to purchase a subscription.
 
-It is a web-based application that works natively on the user's computer. 
+It is a multi-purpose, web-based application that works natively on the user's computer. 
 
 Here's an example output:
 
@@ -81,7 +81,7 @@ Try it out on your computer!
 
 ## Cookie Cooker
 
-Cookie Cooker plays [Cookie Clicker](https://cookie-clicker2.com/) in Chrome. It clicks the big cookie and buys Cursor, Grandma, Farm, and Mine when they are affordable.
+Cookie Cooker is a fun project that plays [Cookie Clicker](https://cookie-clicker2.com/) in Chrome. It clicks the big cookie and buys Cursor, Grandma, Farm, and Mine when they are affordable.
 
 Here's a short demo:
 
@@ -117,7 +117,7 @@ Note that the current figure may differ from the one pre-loaded in the notebook.
 
 ## Sorting algorithms
 
-`Sorting Algorithms` has three programs that read numbers until you type `end`, then sort them:
+`Sorting Algorithms` was made as a learning project. It has three programs that read numbers until you type `end`, then sort them:
 
 | Program | Method |
 | --- | --- |
