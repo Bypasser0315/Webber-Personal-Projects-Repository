@@ -33,11 +33,12 @@ This is my personal collection of projects. The packages for all of them are in 
 
 ## Gradio App
 
-The gradio app is a web-based application that works natively on the user's computer. Here's an example output:
+The gradio app is the most ambitious project in this repository. It is a web-based application that works natively on the user's computer. Here's an example output:
 
 [News summary.pdf](https://github.com/user-attachments/files/34429324/News.summary.pdf)
 
 <img width="904" height="971" alt="image" src="https://github.com/user-attachments/assets/ca7dbf50-9039-4f4e-bd63-ae8ab215e892" />
+
 
 The app works in a linear direction:
 
