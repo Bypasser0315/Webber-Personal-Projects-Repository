@@ -107,6 +107,10 @@ Then, the statistics are scraped and the characteristics, such as origin of Prod
 
 Characteristics of the data set, such as most common origin of product, products with the highest sales, etc, are analysed.
 
+Here is an example of the results:
+
+<img width="784" height="404" alt="image" src="https://github.com/user-attachments/assets/d4eec72e-1b42-4a34-9ca7-e14346f20fb1" />
+
 You can also try using other keywords in the notebook to experiment.
 
 Note that the current figure may differ from the one pre-loaded in the notebook. 
