@@ -14,6 +14,6 @@ Open a terminal in this repository folder and run:
 pip install -r requirements.txt
 ```
 
-That installs the packages for the Gradio app, Cookie Cooker, Whatsapp Bot, the HKTV Mall scraper, and the IAL D1 papers. The sorting programs use only the Python standard library, so they need no extra packages.
+That installs the packages for the Gradio app, Cookie Cooker, WhatsApp Bot, the HKTV Mall scraper, and the IAL D1 papers. The sorting programs use only the Python standard library, so they need no extra packages.
 
 Notebooks can then be opened in Jupyter Notebook, JupyterLab, or Cursor. Browser projects also need Google Chrome. Selenium downloads a matching ChromeDriver on its own.

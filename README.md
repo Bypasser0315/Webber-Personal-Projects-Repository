@@ -26,7 +26,7 @@ This is my personal collection of projects. The packages for all of them are in 
 | ------- | ------- |
 | ![Gradio App](readme-images/image-9.png) | ![Gradio](readme-images/Gradio.svg) app that processes a website from an url, then uses an AI (free model) to extract information based on user request.|
 | ![Cookie Cooker](readme-images/image-10.png) | ![Selenium](readme-images/Selenium.svg) app that automatically plays cookie clicker. |
-| ![Whatsapp Bot](readme-images/image-11.png) | ![Selenium](readme-images/Selenium.svg) app that automates whatsapp messages by sending a message + image(optional) to a large group of recipients listed in a CSV file. |
+| ![WhatsApp Bot](readme-images/image-11.png) | ![Selenium](readme-images/Selenium.svg) app that automates WhatsApp messages by sending a message + image(optional) to a large group of recipients listed in a CSV file. |
 | ![HKTV Mall](readme-images/image-12.png) | Web scraping Demonstration. Uses ![Selenium](readme-images/Selenium.svg) to navigate through HKTV Mall website's dynamnic HTML, then analyses it using ![pandas](readme-images/image-7.png) and visualised using <img width="63" height="20" alt="image" src="https://github.com/user-attachments/assets/422f359e-d59c-45f6-b93c-b07d735ce886" />. | 
 | ![Sorting Algorithms](readme-images/image-13.png) | A small collection of programs that perform sorts of numbered item lists in different methods. |
 | ![D1 Papers](readme-images/image-14.png) | A Demonstration that uses ![pypdf](readme-images/image-17.png) to scrape the pdf, then sort D1 Question and Answer Papers together by topic by locating specific keywords. |
@@ -85,9 +85,9 @@ Here's a short demo:
 
 Try it out on your computer!
 
-## Whatsapp Bot
+## WhatsApp Bot
 
-Whatsapp Bot automates large-scale whatsapp messages for companies and advertisements. It works by scraping the HTML using BeautifulSoup4, then traces whatsapp html using Selenium to locate elements to input images and text, and to send the message.
+WhatsApp Bot automates large-scale WhatsApp messages for companies and advertisements. It works by scraping the HTML using BeautifulSoup4, then traces whatsapp html using Selenium to locate elements to input images and text, and to send the message.
 
 There are 2 versions of the app:
 - Standard (text + image option, to many recipients)

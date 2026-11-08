@@ -4,26 +4,7 @@ This notebook sends a personalised WhatsApp message to each person in a contact 
 
 I built this to practise browser automation with Python, Selenium, and pandas.
 
-**IMPORTANT: There are 2 separate items in the notebook:**
-- Cell 1-2: Standard Image & Send
-- Cell 3: Message Spammer
-
-## What you need
-
-- Python 3
-- Google Chrome
-- A WhatsApp account you can log into with WhatsApp Web
-- pandas and Selenium
-
-```bash
-pip install pandas selenium
-```
-
-## Whatsapp Bot: Standard Section
-
-This section is dedicated to Cell 1-2 of the Notebook.
-
-### How it Works
+## How it Works
 
 There are 2 types of messages this program can send:
 
@@ -62,7 +43,18 @@ Here is an example output with multiple people:
 
 *The image icon is present here, so an image is present in the message. The profile pictures, names are also censored here for privacy reasons.
 
-### Files to add
+## What you need
+
+- Python 3
+- Google Chrome
+- A WhatsApp account you can log into with WhatsApp Web
+- pandas and Selenium
+
+```bash
+pip install pandas selenium
+```
+
+## Files to add
 
 Put **one** `.csv` and **one** `.txt` in this folder, next to `WhatsappAutomaterFinal.ipynb`. The notebook stops if it finds any other number of those files.
 
@@ -83,7 +75,7 @@ Hello [name], this is a reminder.
 
 For Ada, that becomes `Hello Ada, this is a reminder.`
 
-### How to run
+## How to run
 
 1. Open `WhatsappAutomaterFinal.ipynb`.
 2. Run the first code cell.
@@ -93,7 +85,7 @@ For Ada, that becomes `Hello Ada, this is a reminder.`
 
 The first cell prints the CSV and text file it found. The second cell walks the list from top to bottom.
 
-### Attaching an image
+## Attaching an image
 
 When the first cell asks for an image, paste the full path to one file:
 
@@ -111,27 +103,14 @@ That one file is pasted into the chat for every person. After the preview opens,
 
 The file has to be on this computer, and it has to be a photo or a video that WhatsApp's photo picker accepts (`mp4`, `3gpp`, or QuickTime). WhatsApp Web needs to be in English, because the notebook looks for the buttons labelled Attach and Send.
 
-### How it works
+## How it works
 
-The notebook looks in this folder for the contact list and the message. If you start Jupyter from the parent `My_Projects` folder, it also checks a nested `Whatsapp Message Automater` folder.
+The notebook looks in this folder for the contact list and the message. If you start Jupyter from the parent `My_Projects` folder, it also checks a nested `WhatsApp Bot` folder.
 
 For each row it opens a WhatsApp chat for that phone number and replaces `[name]` in the template.
 
 - **Text only:** it types the whole file as one message, then presses Enter once.
 - **With an image:** it pastes the photo, waits for the preview, pastes the whole text file as one caption, clicks Send once, and waits 5 seconds before the next person.
-
-## Whatsapp Bot: Spammer
-
-Note: Do not use this to harass someone. This is only here for demonstrative purposes.
-
-### Inputs
-
-Run cell 3 in the ipynb directly, then submit the inputs:
-|Input|What to submit|
-|----|-----|
-|Phone| Phone number you wish to send this message to|
-|Message| Input your message. |
-|Raw Count| How many messages you wish to send. This must be an integer. (Max is 100 messages)|
 
 ## What’s in this folder
 
