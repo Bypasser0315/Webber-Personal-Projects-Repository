@@ -6,7 +6,8 @@
   
   <span style="font-size: 24px; font-weight: bold"> A personal projects repository <span>
   
-  ![alt text](readme-images/Selenium.svg) ![alt text](readme-images/Gradio.svg) ![alt text](readme-images/image-4.png) ![alt text](readme-images/image-7.png) ![alt text](readme-images/image-16.png) ![alt text](readme-images/image-5.png)  
+  ![Selenium](readme-images/Selenium.svg) ![Gradio](readme-images/Gradio.svg) ![alt text](readme-images/image-4.png) ![alt text](readme-images/image-7.png) ![alt text](readme-images/image-16.png) ![alt text](readme-images/image-5.png) <img width="63" height="20" alt="image" src="https://github.com/user-attachments/assets/e30ceb6b-f323-41ff-81ff-f9b88b150ca9" />
+ 
   
   <span style="font-size: 16px;"> Made with Gemini and Cursor <span>
 </div>
@@ -27,7 +28,7 @@ This is my personal collection of projects. The packages for all of them are in 
 | ![alt text](readme-images/image-9.png) | ![alt text](readme-images/Gradio.svg) app that processes a website from an url, then uses an AI (free model) to extract information based on user request.|
 | ![alt text](readme-images/image-10.png) | ![alt text](readme-images/Selenium.svg) app that automatically plays cookie clicker. |
 | ![alt text](readme-images/image-11.png) | ![alt text](readme-images/Selenium.svg) app that automates whatsapp messages by sending a message + image(optional) to a large group of recipents listed in a CSV file. |
-| ![alt text](readme-images/image-12.png) | Web scraping Demonstration. Uses ![alt text](readme-images/Selenium.svg) to navigate through HKTV Mall website's dynamnic HTML, then analyses it using ![alt text](readme-images/image-7.png).| 
+| ![alt text](readme-images/image-12.png) | Web scraping Demonstration. Uses ![alt text](readme-images/Selenium.svg) to navigate through HKTV Mall website's dynamnic HTML, then analyses it using ![alt text](readme-images/image-7.png) and visualised using <img width="63" height="20" alt="image" src="https://github.com/user-attachments/assets/422f359e-d59c-45f6-b93c-b07d735ce886" /> | 
 | ![alt text](readme-images/image-13.png) | A small collection of programs that perform sorts of numbered item lists in different methods. |
 | ![alt text](readme-images/image-14.png) | A Demonstration that uses ![alt text](readme-images/image-17.png) to scrape the pdf, then sort D1 Question and Answer Papers together by topic by locating specific keywords. |
 
@@ -107,11 +108,19 @@ Then, the statistics are scraped and the characteristics, such as origin of Prod
 
 Characteristics of the data set, such as most common origin of product, products with the highest sales, etc, are analysed.
 
-Here is an example of the results:
+This is one of the Dataframes extracted by pandas:
 
 <img width="784" height="404" alt="image" src="https://github.com/user-attachments/assets/d4eec72e-1b42-4a34-9ca7-e14346f20fb1" />
 
-You can also try using other keywords in the notebook to experiment.
+Using the Dataframe from pandas, the data can be easily visualised using Matplotlib.
+
+Here is a pie chart showing origin of the products, plotted using Matplotlib:
+
+<img width="591" height="449" alt="image" src="https://github.com/user-attachments/assets/478ebb01-db86-44dd-81e3-5c91a465e74b" />
+
+By using a criteria model, a top 10 recommendation list can be obtained (this as of 8/11/2026):
+
+<img width="1032" height="369" alt="Screenshot 2026-11-08 125942" src="https://github.com/user-attachments/assets/68b90ac0-78f6-4d20-bc9a-954523586c7f" />
 
 Note that the current figure may differ from the one pre-loaded in the notebook. 
 
