@@ -6,7 +6,7 @@
   
   <span style="font-size: 24px; font-weight: bold"> A personal projects repository <span>
   
-  ![Selenium](readme-images/Selenium.svg) ![Gradio](readme-images/Gradio.svg) ![alt text](readme-images/image-4.png) ![alt text](readme-images/image-7.png) ![alt text](readme-images/image-16.png) ![alt text](readme-images/image-5.png) <img width="63" height="20" alt="image" src="https://github.com/user-attachments/assets/e30ceb6b-f323-41ff-81ff-f9b88b150ca9" />
+  ![Selenium](readme-images/Selenium.svg) ![Gradio](readme-images/Gradio.svg) ![alt text](readme-images/image-4.png) ![alt text](readme-images/image-7.png) ![alt text](readme-images/image-16.png) ![version](readme-images/image-5.png) <img width="63" height="20" alt="image" src="https://github.com/user-attachments/assets/e30ceb6b-f323-41ff-81ff-f9b88b150ca9" />
  
   
   <span style="font-size: 16px;"> Made with Gemini and Cursor <span>
@@ -25,12 +25,12 @@ This is my personal collection of projects. The packages for all of them are in 
 
 | Project | Function |
 | ------- | ------- |
-| ![alt text](readme-images/image-9.png) | ![alt text](readme-images/Gradio.svg) app that processes a website from an url, then uses an AI (free model) to extract information based on user request.|
-| ![alt text](readme-images/image-10.png) | ![alt text](readme-images/Selenium.svg) app that automatically plays cookie clicker. |
-| ![alt text](readme-images/image-11.png) | ![alt text](readme-images/Selenium.svg) app that automates whatsapp messages by sending a message + image(optional) to a large group of recipents listed in a CSV file. |
-| ![alt text](readme-images/image-12.png) | Web scraping Demonstration. Uses ![alt text](readme-images/Selenium.svg) to navigate through HKTV Mall website's dynamnic HTML, then analyses it using ![alt text](readme-images/image-7.png) and visualised using <img width="63" height="20" alt="image" src="https://github.com/user-attachments/assets/422f359e-d59c-45f6-b93c-b07d735ce886" /> | 
-| ![alt text](readme-images/image-13.png) | A small collection of programs that perform sorts of numbered item lists in different methods. |
-| ![alt text](readme-images/image-14.png) | A Demonstration that uses ![alt text](readme-images/image-17.png) to scrape the pdf, then sort D1 Question and Answer Papers together by topic by locating specific keywords. |
+| ![Gradio App](readme-images/image-9.png) | ![Gradio](readme-images/Gradio.svg) app that processes a website from an url, then uses an AI (free model) to extract information based on user request.|
+| ![Cookie Cooker](readme-images/image-10.png) | ![Selenium](readme-images/Selenium.svg) app that automatically plays cookie clicker. |
+| ![Whatsapp Bot](readme-images/image-11.png) | ![Selenium](readme-images/Selenium.svg) app that automates whatsapp messages by sending a message + image(optional) to a large group of recipients listed in a CSV file. |
+| ![HKTV Mall](readme-images/image-12.png) | Web scraping Demonstration. Uses ![Selenium](readme-images/Selenium.svg) to navigate through HKTV Mall website's dynamnic HTML, then analyses it using ![pandas](readme-images/image-7.png) and visualised using <img width="63" height="20" alt="image" src="https://github.com/user-attachments/assets/422f359e-d59c-45f6-b93c-b07d735ce886" />. | 
+| ![Sorting Algorithms](readme-images/image-13.png) | A small collection of programs that perform sorts of numbered item lists in different methods. |
+| ![D1 Papers](readme-images/image-14.png) | A Demonstration that uses ![pypdf](readme-images/image-17.png) to scrape the pdf, then sort D1 Question and Answer Papers together by topic by locating specific keywords. |
 
 ## Gradio App
 
@@ -88,17 +88,27 @@ Here's a short demo:
 
 <img width="800" height="449" alt="ScreenRecording2026-11-03182613-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/4bb68cf7-d5b0-448c-b750-b6627ce6ae1f" />
 
-
 Try it out on your computer!
 
 ## Whatsapp Bot
 
 Whatsapp Bot automates large-scale whatsapp messages for companies and advertisements. It works by scraping the HTML using BeautifulSoup4, then traces whatsapp html using Selenium to locate elements to input images and text, and to send the message.
 
-Here's a short demo of it in action:
+There are 2 versions of the app:
+- Standard (text + image option, to many recipients)
+- Spammer (just text, to one single recipient)
 
-<img width="800" height="449" alt="ScreenRecording2026-11-04230910-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/63f4a8a2-fff7-4c1b-9923-04beec9e0dd9" />
+The standard is designed for companies to do advertisements to a large group of people, while the spammer is just for demonstrative purposes only.
+  
+Here is a quick demo of how it sends messages (Cell 3):
 
+<img width="660" height="494" alt="ScreenRecording2026-11-08142911-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/382afa71-7cc6-4f4f-a7fd-2636c621c240" />
+
+In the standard version, the app can jump from recipient to recipient:
+
+<img width="800" height="903" alt="ScreenRecording2026-11-08181201-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/8b4cc56d-f51e-47db-a3fe-d3524bb13d89" />
+
+Note that the names can also change from recipient to recipient. Do not use spammer to harass someone.
 
 ## HKTV Mall scraper
 
