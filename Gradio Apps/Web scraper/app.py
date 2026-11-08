@@ -6,6 +6,7 @@ try:
     import re
     import tempfile
     import time
+    from datetime import datetime
     from pathlib import Path
 
     import gradio as gr
@@ -109,13 +110,11 @@ def ai_prompt(prompt, api_key, system_prompt, time_rate):
         raise
 
 
-def resolve_api_key(ui_key):
-    api_key = (ui_key or "").strip()
-    if api_key in _PLACEHOLDER_KEYS:
-        api_key = (OPENROUTER_API_KEY or "").strip()
+def get_api_key():
+    api_key = (OPENROUTER_API_KEY or "").strip()
     if api_key in _PLACEHOLDER_KEYS:
         raise ValueError(
-            "No API key found. Put OPENROUTER_API_KEY in your .env file, or paste a key in the UI."
+            "No API key found. Put OPENROUTER_API_KEY in your .env file in this folder."
         )
     return api_key
 
@@ -204,34 +203,56 @@ def markdown_to_pdf(markdown_text, title):
     return output_path
 
 
-def build_prompt(output_format, goal, detail_instruction, cleaned_content, table, specs):
+def timeline_instruction(timeline):
+    if not timeline:
+        return ""
+    return (
+        "Structure the answer as a timeline: use a level-2 heading named Timeline, "
+        "then list events in chronological order. "
+        "Each event should be a level-3 heading with the date or time period, "
+        "followed by one or two sentences. "
+        "If exact dates are missing, use the best approximate order you can infer from the page."
+    )
+
+
+def build_prompt(output_format, goal, detail_instruction, cleaned_content, table, specs, timeline):
     markdown_like = output_format in ("Markdown", "PDF")
+    timeline_note = timeline_instruction(timeline)
+    extra_bits = []
+    if timeline_note:
+        extra_bits.append(timeline_note)
+    if specs:
+        extra_bits.append(f"Additional Customizations: {specs}")
+    extras = "\n".join(extra_bits)
+
     if markdown_like and table and specs:
         return (
             f"User Goal: {goal}. {detail_instruction}\n\n"
             f"Based on this scraped text:\n{cleaned_content}\n\n"
             "Format style: Markdown. You MUST include a Markdown table. "
             "Ensure every single row of the table starts on a brand new line using proper formatting.\n"
-            f"Additional Customizations: {specs}"
+            f"{extras}"
         )
     if markdown_like and table:
         return (
             f"User Goal: {goal}. {detail_instruction}\n\n"
             f"Based on this scraped text:\n{cleaned_content}\n\n"
             "Format style: Markdown. You MUST include a Markdown table. "
-            "Ensure every single row of the table starts on a brand new line using proper formatting."
+            "Ensure every single row of the table starts on a brand new line using proper formatting.\n"
+            f"{timeline_note}"
         )
-    if markdown_like and specs:
+    if markdown_like and (specs or timeline):
         return (
             f"User Goal: {goal}. {detail_instruction} "
             f"Based on this scraped text:{cleaned_content}. Format style: Markdown.\n"
-            f"Additional Customizations: {specs}"
+            f"{extras}"
         )
     if markdown_like:
         return (
             f"User Goal: {goal}. {detail_instruction}\n\n"
             f"Based on this scraped text:\n{cleaned_content}\n\n"
-            "Format style: Markdown. Use headings, lists, and tables where they make the content clearer."
+            "Format style: Markdown. Use headings, lists, and tables where they make the content clearer.\n"
+            f"{timeline_note}"
         )
     return (
         f"User Goal: {goal}. {detail_instruction} "
@@ -239,25 +260,114 @@ def build_prompt(output_format, goal, detail_instruction, cleaned_content, table
     )
 
 
-def run_scraper(url, goal, api_key, detail_level, time_delay, output_format, title, table, specs):
+def format_history_display(history):
+    if not history:
+        return "*No recorded outputs yet. Runs that produce Markdown or PDF are saved here.*"
+    blocks = []
+    for index, item in enumerate(reversed(history), start=1):
+        blocks.append(f"### {index}. {item['title']}")
+        blocks.append(f"*Recorded {item['when']} · {item['url']}*")
+        blocks.append(item["markdown"])
+        blocks.append("---")
+    return "\n\n".join(blocks)
+
+
+def history_markdown_blob(history):
+    if not history:
+        return ""
+    parts = [f"# Past outputs ({len(history)} runs)\n"]
+    for index, item in enumerate(history, start=1):
+        parts.append(f"## {index}. {item['title']}")
+        parts.append(f"*Recorded {item['when']} · {item['url']}*")
+        parts.append(f"**Goal:** {item['goal']}")
+        parts.append(item["markdown"])
+        parts.append("\n---\n")
+    return "\n".join(parts)
+
+
+def append_history(history, url, goal, title, markdown_text):
+    history = list(history or [])
+    history.append(
+        {
+            "title": (title or "My Report").strip() or "My Report",
+            "url": (url or "").strip(),
+            "goal": (goal or "").strip(),
+            "when": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "markdown": unwrap_markdown_fence(markdown_text),
+        }
+    )
+    return history
+
+
+def export_history_pdf(history):
+    if not history:
+        raise gr.Error("There are no recorded outputs yet.")
+    blob = history_markdown_blob(history)
+    pdf_path = markdown_to_pdf(blob, "Past outputs")
+    return str(pdf_path)
+
+
+def clear_run_outputs():
+    return (
+        gr.update(value="", visible=True),
+        gr.update(value="", visible=False),
+        gr.update(value=None, visible=False),
+    )
+
+
+def status_update(message):
+    return gr.update(value=message, visible=True)
+
+
+def run_scraper(
+    url,
+    goal,
+    detail_level,
+    time_delay,
+    output_format,
+    title,
+    table,
+    specs,
+    timeline,
+    history,
+):
+    history = list(history or [])
+    cleared_text, cleared_md, cleared_file = clear_run_outputs()
+
     if output_format == "PDF":
-        yield f"Starting program with PDF generation, estimated time is {time_delay * 8 + 5} seconds", None, None
+        yield (
+            status_update(
+                f"Starting program with PDF generation, estimated time is {time_delay * 8 + 5} seconds"
+            ),
+            cleared_md,
+            cleared_file,
+            history,
+            format_history_display(history),
+        )
     else:
-        yield f"Starting program with output as {output_format}, estimated time is {time_delay * 8} seconds", None, None
+        yield (
+            status_update(
+                f"Starting program with output as {output_format}, estimated time is {time_delay * 8} seconds"
+            ),
+            cleared_md,
+            cleared_file,
+            history,
+            format_history_display(history),
+        )
 
     time.sleep(time_delay * 0.1)
-    yield "Scraping website...", None, None
+    yield status_update("Scraping website..."), cleared_md, cleared_file, history, format_history_display(history)
     cleaned_content = web_scrape(url, time_delay)
     time.sleep(time_delay * 0.5)
 
     try:
-        api_key2 = resolve_api_key(api_key)
-        yield "API key ready", None, None
+        api_key = get_api_key()
+        yield status_update("API key ready"), cleared_md, cleared_file, history, format_history_display(history)
     except Exception as e:
-        yield f"Setup failed: {e}", None, None
+        yield status_update(f"Setup failed: {e}"), cleared_md, cleared_file, history, format_history_display(history)
         return
 
-    yield "Building prompt...", None, None
+    yield status_update("Building prompt..."), cleared_md, cleared_file, history, format_history_display(history)
     system_prompt = (
         "You are a precise web-scraping content extraction assistant. "
         f"Your job is to extract content based on the user's goal: {goal}, "
@@ -265,132 +375,178 @@ def run_scraper(url, goal, api_key, detail_level, time_delay, output_format, tit
     )
     detail_instruction = f"The final response must be {detail_level}."
     big_prompt = build_prompt(
-        output_format, goal, detail_instruction, cleaned_content, table, specs
+        output_format, goal, detail_instruction, cleaned_content, table, specs, timeline
     )
 
     time.sleep(time_delay * 0.5)
-    yield "Asking the model...", None, None
+    yield status_update("Asking the model..."), cleared_md, cleared_file, history, format_history_display(history)
     output = ai_prompt(
         prompt=big_prompt,
-        api_key=api_key2,
+        api_key=api_key,
         system_prompt=system_prompt,
         time_rate=time_delay,
     )
 
     if output_format == "PDF":
-        yield "Rendering Markdown into a PDF...", None, None
+        yield status_update("Rendering Markdown into a PDF..."), cleared_md, cleared_file, history, format_history_display(history)
         pdf_path = markdown_to_pdf(output, title)
+        history = append_history(history, url, goal, title, output)
         yield (
-            gr.Textbox(visible=True, value="Your PDF has been generated successfully!"),
-            gr.Markdown(visible=True, value=output),
-            gr.File(visible=True, value=str(pdf_path)),
+            status_update("Your PDF has been generated successfully!"),
+            gr.update(visible=False, value=""),
+            gr.update(visible=True, value=str(pdf_path)),
+            history,
+            format_history_display(history),
         )
         return
 
     if output_format == "Markdown":
+        history = append_history(history, url, goal, title or "My Report", output)
         yield (
-            gr.Textbox(visible=False, value=""),
-            gr.Markdown(visible=True, value=output),
-            gr.File(visible=False),
+            status_update("Markdown output is ready below."),
+            gr.update(visible=True, value=output),
+            gr.update(visible=False, value=None),
+            history,
+            format_history_display(history),
         )
         return
 
     yield (
-        gr.Textbox(visible=True, value=output),
-        gr.Markdown(visible=False),
-        gr.File(visible=False),
+        gr.update(visible=True, value=output),
+        gr.update(visible=False, value=""),
+        gr.update(visible=False, value=None),
+        history,
+        format_history_display(history),
     )
 
 
 def toggle_format_options(status):
     if status == "PDF":
         return (
-            gr.Textbox(visible=True),
-            gr.Checkbox(value=False, visible=True),
-            gr.Textbox(value="", visible=False),
+            gr.update(visible=True),
+            gr.update(visible=True),
+            gr.update(value=False, visible=True),
+            gr.update(value=False, visible=True),
+            gr.update(value="", visible=True),
         )
     if status == "Markdown":
         return (
-            gr.Textbox(visible=False),
-            gr.Checkbox(value=False, visible=True),
-            gr.Textbox(value="", visible=True),
+            gr.update(visible=False),
+            gr.update(visible=True),
+            gr.update(value=False, visible=True),
+            gr.update(value=False, visible=True),
+            gr.update(value="", visible=True),
         )
     return (
-        gr.Textbox(visible=False),
-        gr.Checkbox(value=False, visible=False),
-        gr.Textbox(value="", visible=False),
+        gr.update(visible=False),
+        gr.update(visible=False),
+        gr.update(value=False, visible=False),
+        gr.update(value=False, visible=False),
+        gr.update(value="", visible=False),
     )
 
 
 with gr.Blocks(title="Web Scraper") as demo:
+    output_history = gr.State([])
     gr.Markdown("# Web Scraper\nScrape a page, then turn it into plain text, Markdown, or a PDF rendered from Markdown.")
 
-    with gr.Row():
-        with gr.Column(scale=1, min_width=300):
-            url = gr.Textbox(label="Website URL")
-            goal = gr.Textbox(label="What do you need from this website?")
-            api_key = gr.Textbox(
-                label="OpenRouter API key (leave blank to use OPENROUTER_API_KEY from .env)",
-                type="password",
-            )
-            detail_level = gr.Dropdown(
-                label="How detailed should the output be?",
-                choices=[
-                    "Very Simple",
-                    "Simple",
-                    "Moderately Detailed",
-                    "Detailed",
-                    "Very Detailed",
-                ],
-                value="Moderately Detailed",
-            )
-            lag = gr.Slider(
-                2,
-                50,
-                value=15,
-                step=0.1,
-                label="Lag (raise this if your connection is slow; 15–20 is a safe default)",
-            )
-        with gr.Column(scale=2, min_width=300):
-            text_output = gr.Textbox(label="Status / Text Output", visible=True)
-            file_output = gr.File(label="Download your file (.pdf)", visible=False)
-            markdown_output = gr.Markdown(label="Markdown Output", visible=False)
+    with gr.Tabs():
+        with gr.Tab("Scraper"):
+            with gr.Row():
+                with gr.Column(scale=1, min_width=320):
+                    url = gr.Textbox(label="Website URL")
+                    goal = gr.Textbox(label="What do you need from this website?")
+                    detail_level = gr.Dropdown(
+                        label="How detailed should the output be?",
+                        choices=[
+                            "Very Simple",
+                            "Simple",
+                            "Moderately Detailed",
+                            "Detailed",
+                            "Very Detailed",
+                        ],
+                        value="Moderately Detailed",
+                    )
+                    lag = gr.Slider(
+                        2,
+                        50,
+                        value=15,
+                        step=0.1,
+                        label="Lag (raise this if your connection is slow; 15–20 is a safe default)",
+                    )
+                    with gr.Group():
+                        gr.Markdown("### Output settings")
+                        output_format = gr.Radio(
+                            label="Output format",
+                            choices=["Plain text", "Markdown", "PDF"],
+                            value="Plain text",
+                        )
+                        title = gr.Textbox(
+                            label="Title for your PDF",
+                            value="My Report",
+                            visible=False,
+                        )
+                        with gr.Column(visible=False) as md_extras:
+                            with gr.Row():
+                                md_table = gr.Checkbox(
+                                    label="Include a table",
+                                    value=False,
+                                )
+                                md_timeline = gr.Checkbox(
+                                    label="Format as a timeline",
+                                    value=False,
+                                )
+                            md_specs = gr.Textbox(
+                                label="Extra Markdown customisations",
+                                value="",
+                            )
+                    start_button = gr.Button("Start", variant="primary")
 
-    with gr.Row():
-        with gr.Column(scale=1, min_width=300):
-            output_format = gr.Radio(
-                label="Output format",
-                choices=["Plain text", "Markdown", "PDF"],
-                value="Plain text",
-            )
-            title = gr.Textbox(
-                label="Title for your PDF",
-                value="My Report",
-                visible=False,
-            )
-            md_table = gr.Checkbox(
-                label="Include a table",
-                value=False,
-                visible=False,
-            )
-            md_specs = gr.Textbox(
-                label="Extra Markdown customisations",
-                value="",
-                visible=False,
-            )
+                with gr.Column(scale=2, min_width=320):
+                    with gr.Group():
+                        gr.Markdown("### Results")
+                        text_output = gr.Textbox(label="Status / Text Output", visible=True, lines=6)
+                        markdown_output = gr.Markdown(label="Markdown Output", visible=False)
+                        file_output = gr.File(label="Download your file (.pdf)", visible=False)
 
-    start_button = gr.Button("Start", variant="primary")
+        with gr.Tab("Past outputs"):
+            past_outputs_view = gr.Markdown(
+                value="*No recorded outputs yet. Runs that produce Markdown or PDF are saved here.*"
+            )
+            export_past_button = gr.Button("Export all recorded outputs to one PDF", variant="secondary")
+            past_pdf_file = gr.File(label="Combined PDF download", visible=True)
 
     output_format.change(
         fn=toggle_format_options,
         inputs=output_format,
-        outputs=[title, md_table, md_specs],
+        outputs=[title, md_extras, md_table, md_timeline, md_specs],
+    )
+    output_format.change(
+        fn=clear_run_outputs,
+        inputs=None,
+        outputs=[text_output, markdown_output, file_output],
     )
     start_button.click(
         fn=run_scraper,
-        inputs=[url, goal, api_key, detail_level, lag, output_format, title, md_table, md_specs],
-        outputs=[text_output, markdown_output, file_output],
+        inputs=[
+            url,
+            goal,
+            detail_level,
+            lag,
+            output_format,
+            title,
+            md_table,
+            md_specs,
+            md_timeline,
+            output_history,
+        ],
+        outputs=[text_output, markdown_output, file_output, output_history, past_outputs_view],
         api_name="webscraper",
+    )
+    export_past_button.click(
+        fn=export_history_pdf,
+        inputs=output_history,
+        outputs=past_pdf_file,
     )
 
 if __name__ == "__main__":

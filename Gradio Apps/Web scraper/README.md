@@ -29,12 +29,9 @@ source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-3. Rewrite the env variable to be your [OpenRouter](https://openrouter.ai) API Key:
-```env
-OPENROUTER_API_KEY=your-key-here
-```
+3. Open `.env.example`, paste your [OpenRouter](https://openrouter.ai) API key in place of the placeholder, then rename the file to `.env` in this folder.
 
-You can obtain one easily by clicking the link, then click "Get API Key" on the website front page, then press "+New key". Note that you may have to open an account.
+You can obtain a key from OpenRouter: open the site, click **Get API Key**, then **+ New key**. You may need to create an account first.
 
 ## Run
 
@@ -46,6 +43,7 @@ Then open the local Gradio URL shown in the terminal.
 
 ## Tips
 
-- Leave the API key field blank in the UI to use `OPENROUTER_API_KEY` from `.env`.
+- The app reads `OPENROUTER_API_KEY` from `.env` only. Do not commit `.env`.
+- Markdown and PDF runs can use **Include a table** and **Format as a timeline**. Finished Markdown is listed on the **Past outputs** tab; export them to one PDF from there.
 - Raise the **Lag** slider if scraping fails on slow pages (15–20 is a good starting point). If your device has poor internet, you may have to set this value higher.
 - Older experimental versions live in `archive/`.
