@@ -67,13 +67,9 @@ Thanks to Gradio, a simple input/output interface was achieved. There are 2 main
 - Prompt
 - Output format
 
-The prompt box features several adjustable elements and the input HTML:
+The prompt box features several adjustable elements and the input HTML, and the output box decides the format of the output:
 
-<img width="400" height="499" alt="ScreenRecording2026-11-05210931-ezgif com-video-to-gif-converter(5)" src="https://github.com/user-attachments/assets/b777af02-09de-451a-9779-b64fa57f8f3d" />
-
-The output box decides the format of the output:
-
-<img width="800" height="129" alt="ScreenRecording2026-11-05211105-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/78addf02-697d-4089-a22c-440d3ef2d2b3" />
+<img width="624" height="766" alt="ScreenRecording2026-11-08191202-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/5eda8ec5-649e-4091-8fcd-a3eb92921fbb" />
 
 This layout aims to minimize confusion and allow for a flexible range of both inputs and outputs.
 
