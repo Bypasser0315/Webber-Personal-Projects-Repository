@@ -6,8 +6,7 @@
   
   <span style="font-size: 24px; font-weight: bold"> A personal projects repository <span>
   
-  ![Selenium](readme-images/Selenium.svg) ![Gradio](readme-images/Gradio.svg) ![alt text](readme-images/image-4.png) ![alt text](readme-images/image-7.png) ![alt text](readme-images/image-16.png) ![version](readme-images/image-5.png) <img width="63" height="20" alt="image" src="https://github.com/user-attachments/assets/e30ceb6b-f323-41ff-81ff-f9b88b150ca9" />
- 
+  ![Selenium](readme-images/Selenium.svg) ![Gradio](readme-images/Gradio.svg) ![alt text](readme-images/image-4.png) ![alt text](readme-images/image-7.png) ![alt text](readme-images/image-16.png) <img width="63" height="20" alt="image" src="https://github.com/user-attachments/assets/e30ceb6b-f323-41ff-81ff-f9b88b150ca9" /> <img width="90" height="20" alt="image" src="https://github.com/user-attachments/assets/4516bb95-72e1-44a0-b8d8-0c7bdc264be4" />
   
   <span style="font-size: 16px;"> Made with Gemini and Cursor <span>
 </div>
