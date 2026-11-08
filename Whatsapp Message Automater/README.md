@@ -129,10 +129,9 @@ Note: Do not use this to harass someone. This is only here for demonstrative pur
 Run cell 3 in the ipynb directly, then submit the inputs:
 |Input|What to submit|
 |----|-----|
-|DEMO_LIMIT| Security Measure. How many messages you wish to send. This must be an integer. |
 |Phone| Phone number you wish to send this message to|
 |Message| Input your message. |
-|Raw Count| How many messages you wish to send. This must be an integer. |
+|Raw Count| How many messages you wish to send. This must be an integer. (Max is 100 messages)|
 
 ## What’s in this folder
 
